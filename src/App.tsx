@@ -2,6 +2,11 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import './App.css';
 
+import GetStores from './usecases/getStores';
+import StoreRepository from './infrastractures/storeRepository';
+
+console.log((new GetStores(new StoreRepository())).execute());
+
 const App: React.FC = () => {
   return (
     <div className="App">
