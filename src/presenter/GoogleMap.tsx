@@ -1,21 +1,37 @@
 import React from "react";
 import Store from "../domain/valueobjects/store";
-import Stores from "../domain/entities/stores";
 import GetStores from "../usecases/getStores";
 import StoreRepository from "../infrastractures/storeRepository";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
+import {AxiosResponse} from "axios";
 
 interface Props {}
 
+interface State {
+    stores: Store[],
+}
 
-class GoogleMap extends React.Component<Props> {
-    private stores: Stores;
 
+class GoogleMap extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
-        this.stores = (new GetStores(new StoreRepository())).execute();
+        this.state = {
+            stores: []
+        };
+
+        (new GetStores(new StoreRepository())).execute().then((stores: AxiosResponse<Store[]>) => {
+            let stateStores: Store[] = this.state.stores.slice();
+            // eslint-disable-next-line
+            stores.data.map((store: Store) => {
+                stateStores.push(store);
+            });
+
+            this.setState({
+                stores: stateStores,
+            });
+        });
     }
 
     render () {
@@ -32,7 +48,7 @@ class GoogleMap extends React.Component<Props> {
 
     renderMarkers() {
         return (
-            this.stores.getStores().map((store: Store, index: number) => {
+            this.state.stores.map((store: Store, index: number) => {
                 return (
                     <Marker
                         key={index}

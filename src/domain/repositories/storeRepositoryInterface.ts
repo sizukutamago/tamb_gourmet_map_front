@@ -1,5 +1,6 @@
-import Stores from '../entities/stores'
+import Store from "../valueobjects/store";
+import {AxiosResponse} from "axios";
 
 export default interface StoreRepositoryInterface {
-    getStores(): Stores;
+    findAll(): Promise<AxiosResponse<Store[]>>;
 }

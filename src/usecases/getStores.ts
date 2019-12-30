@@ -1,5 +1,4 @@
 import StoreRepositoryInterface from "../domain/repositories/storeRepositoryInterface";
-import Stores from "../domain/entities/stores";
 
 export default class GetStores {
     private storeRepository: StoreRepositoryInterface;
@@ -8,7 +7,7 @@ export default class GetStores {
         this.storeRepository = storeRepositoryInterface;
     }
 
-    execute(): Stores {
-        return this.storeRepository.getStores();
+    execute() {
+        return this.storeRepository.findAll();
     }
 }
