@@ -12,6 +12,14 @@ export default class StoreRepository implements StoreRepositoryInterface {
             comment: 'ハンバーグカレー食べたいときはここ。'
         });
 
+        stores.addStore({
+            name: '優しいお弁当',
+            lat: 35.69386382435,
+            lng: 139.76458582216,
+            genre: '和食',
+            comment: 'リンクは古川さんが購入したお弁当の写真です'
+        });
+
         return stores;
     }
 }
