@@ -9,6 +9,7 @@
     top: 50%;
     margin: -20px 0 0 -20px;
 }
+
 .pin:after {
     content: "";
     width: 14px;
@@ -18,6 +19,7 @@
     position: absolute;
     border-radius: 50%;
 }
+
 .pin p {
     display: block;
     left: -10px;
@@ -42,6 +44,7 @@
     transform: rotateX(55deg);
     z-index: -2;
 }
+
 .pulse:after {
     content: "";
     border-radius: 50%;

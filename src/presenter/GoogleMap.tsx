@@ -12,7 +12,7 @@ const GoogleMap: React.FC<Props> = props => {
     return (
         <div className='Map'>
             <GoogleMapReact
-                style={{ width: '100%'}}
+                style={{width: '100%'}}
                 bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_KEY}}
                 defaultCenter={{lat: 35.695491, lng: 139.763253}}
                 defaultZoom={17}

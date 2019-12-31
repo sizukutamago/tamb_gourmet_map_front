@@ -7,7 +7,8 @@ import StoreRepository from "./infrastractures/storeRepository";
 import {AxiosResponse} from "axios";
 import Store from "./domain/valueobjects/store";
 
-interface Props {}
+interface Props {
+}
 
 interface State {
     stores: Store[],

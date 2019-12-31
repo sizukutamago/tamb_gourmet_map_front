@@ -14,7 +14,7 @@ const StoreCardList: React.FC<Props> = props => {
                     props.stores.map((store: Store, index: number) => {
                         return (
                             <li key={index}>{store.name}</li>
-                            );
+                        );
                     })
                 }
             </ul>
