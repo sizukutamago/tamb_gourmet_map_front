@@ -1,0 +1,5 @@
+.Map:first-child {
+    position: relative !important;
+    height: 100% !important;
+    width: 80vw;
+}

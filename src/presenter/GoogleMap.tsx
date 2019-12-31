@@ -1,65 +1,37 @@
 import React from "react";
 import Store from "../domain/valueobjects/store";
-import GetStores from "../usecases/getStores";
-import StoreRepository from "../infrastractures/storeRepository";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
-import {AxiosResponse} from "axios";
+import './GoogleMap.css';
 
-interface Props {}
-
-interface State {
-    stores: Store[],
+interface Props {
+    stores: Store[]
 }
 
-
-class GoogleMap extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {
-            stores: []
-        };
-
-        (new GetStores(new StoreRepository())).execute().then((stores: AxiosResponse<Store[]>) => {
-            let stateStores: Store[] = this.state.stores.slice();
-            // eslint-disable-next-line
-            stores.data.map((store: Store) => {
-                stateStores.push(store);
-            });
-
-            this.setState({
-                stores: stateStores,
-            });
-        });
-    }
-
-    render () {
-        return (
+const GoogleMap: React.FC<Props> = props => {
+    return (
+        <div className='Map'>
             <GoogleMapReact
+                style={{ width: '100%'}}
                 bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_KEY}}
                 defaultCenter={{lat: 35.695491, lng: 139.763253}}
                 defaultZoom={17}
             >
-                {this.renderMarkers()}
+                {
+                    props.stores.map((store: Store, index: number) => {
+                        return (
+                            <Marker
+                                key={index}
+                                lat={store.lat}
+                                lng={store.lng}
+                                storeName={store.name}
+                            />
+                        )
+                    })
+                }
             </GoogleMapReact>
-        );
-    }
-
-    renderMarkers() {
-        return (
-            this.state.stores.map((store: Store, index: number) => {
-                return (
-                    <Marker
-                        key={index}
-                        lat={store.lat}
-                        lng={store.lng}
-                        storeName={store.name}
-                    />
-                )
-            })
-        );
-    }
-}
+        </div>
+    )
+};
 
 export default GoogleMap;

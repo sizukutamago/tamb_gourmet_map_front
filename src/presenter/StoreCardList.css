@@ -1,0 +1,11 @@
+.StoreCardList {
+    width: 20vw;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.StoreCardList ul {
+    list-style: none;
+}
