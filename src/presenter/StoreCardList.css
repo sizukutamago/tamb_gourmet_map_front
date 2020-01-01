@@ -4,8 +4,37 @@
     position: absolute;
     right: 0;
     top: 0;
+    overflow: scroll;
 }
 
 .StoreCardList ul {
     list-style: none;
+    padding: 0;
+    margin: auto 5px;
+}
+
+.card {
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px #ccc;
+}
+.box {
+    display: flex;
+}
+.image {
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+}
+.title {
+    font-weight: bold;
+    margin: 10px;
+    color: #444;
+}
+.content {
+    padding-top: 5px;
+    color: #666;
 }
