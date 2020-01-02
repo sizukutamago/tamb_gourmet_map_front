@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import './App.css';
 import GoogleMap from "./presenter/GoogleMap";
 import StoreCardList from "./presenter/StoreCardList";
@@ -12,6 +12,7 @@ interface Props {
 
 interface State {
     stores: Store[],
+    filterStores: Store[],
 }
 
 export default class App extends React.Component<Props, State> {
@@ -19,7 +20,8 @@ export default class App extends React.Component<Props, State> {
         super(props);
 
         this.state = {
-            stores: []
+            stores: [],
+            filterStores: [],
         };
 
         (new GetStores(new StoreRepository())).execute().then((stores: AxiosResponse<Store[]>) => {
@@ -31,15 +33,34 @@ export default class App extends React.Component<Props, State> {
 
             this.setState({
                 stores: stateStores,
+                filterStores: stateStores,
             });
         });
+    }
+
+    filter = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.value === '') {
+            this.setState({
+                filterStores: this.state.stores
+            });
+            return;
+        }
+
+        let filteredList = this.state.stores.filter(store => {
+            return store.name.search(event.target.value) !== -1;
+        });
+
+        this.setState({
+            filterStores: filteredList
+        })
     }
 
     render() {
         return (
             <div className="App">
-                <GoogleMap stores={this.state.stores}/>
-                <StoreCardList stores={this.state.stores}/>
+                <GoogleMap stores={this.state.filterStores}/>
+                <input type='text' onChange={this.filter} />
+                <StoreCardList stores={this.state.filterStores}/>
             </div>
         );
     }

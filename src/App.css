@@ -2,3 +2,11 @@
     width: 100vw;
     height: 100vh;
 }
+
+input {
+    top: 0;
+    right: 3vw;
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+}
