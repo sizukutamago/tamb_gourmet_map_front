@@ -59,7 +59,7 @@ export default class App extends React.Component<Props, State> {
         return (
             <div className="App">
                 <GoogleMap stores={this.state.filterStores}/>
-                <input type='text' onChange={this.filter} />
+                <input type='text' placeholder="お店検索" onChange={this.filter} />
                 <StoreCardList stores={this.state.filterStores}/>
             </div>
         );

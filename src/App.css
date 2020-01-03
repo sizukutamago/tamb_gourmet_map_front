@@ -9,4 +9,16 @@ input {
     position: absolute;
     width: 15vw;
     height: 5vh;
+    vertical-align:top;
+    padding: 0;
+    font-size: 18px;
+    border-bottom:1px solid #cccccc;
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    cursor: pointer;
+}
+
+input:focus {
+    outline: 0;
 }
