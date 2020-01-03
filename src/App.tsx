@@ -47,7 +47,7 @@ export default class App extends React.Component<Props, State> {
         }
 
         let filteredList = this.state.stores.filter(store => {
-            return store.name.search(event.target.value) !== -1;
+            return store.name.search(event.target.value) !== -1 || store.genre.search(event.target.value) !== -1 || store.comment.search(event.target.value) !== -1;
         });
 
         this.setState({
