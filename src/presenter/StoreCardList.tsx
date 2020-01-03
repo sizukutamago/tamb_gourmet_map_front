@@ -15,7 +15,9 @@ const StoreCardList: React.FC<Props> = props => {
                         return (
                             <li key={index} className="card">
                                 <div className="box">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxBmpbAOySU7C1IHHb-oMcRxjm8I1P2IKXNq1t2Xa9KiboZIiP" className="image" alt='storeimage' />
+                                    <img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxBmpbAOySU7C1IHHb-oMcRxjm8I1P2IKXNq1t2Xa9KiboZIiP"
+                                        className="image" alt='storeimage'/>
                                     <div>
                                         <p className="title">{store.name}</p>
                                         <p className="content">{store.comment}</p>

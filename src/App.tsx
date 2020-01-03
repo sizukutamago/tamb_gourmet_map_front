@@ -38,7 +38,7 @@ export default class App extends React.Component<Props, State> {
         });
     }
 
-    filter = (event: ChangeEvent<HTMLInputElement>) => {
+    filter = (event: ChangeEvent<HTMLInputElement>): void => {
         if (event.target.value === '') {
             this.setState({
                 filterStores: this.state.stores
@@ -53,13 +53,13 @@ export default class App extends React.Component<Props, State> {
         this.setState({
             filterStores: filteredList
         })
-    }
+    };
 
     render() {
         return (
             <div className="App">
                 <GoogleMap stores={this.state.filterStores}/>
-                <input type='text' placeholder="お店検索" onChange={this.filter} />
+                <input type='text' placeholder="お店検索" onChange={this.filter}/>
                 <StoreCardList stores={this.state.filterStores}/>
             </div>
         );
