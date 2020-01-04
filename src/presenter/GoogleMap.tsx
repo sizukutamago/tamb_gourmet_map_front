@@ -4,8 +4,14 @@ import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 import './GoogleMap.css';
 
+export interface Center {
+    lat: number,
+    lng: number,
+}
+
 interface Props {
-    stores: Store[]
+    stores: Store[],
+    center: Center,
 }
 
 const GoogleMap: React.FC<Props> = props => {
@@ -14,7 +20,7 @@ const GoogleMap: React.FC<Props> = props => {
             <GoogleMapReact
                 style={{width: '100%'}}
                 bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_KEY}}
-                defaultCenter={{lat: 35.695491, lng: 139.763253}}
+                center={props.center}
                 defaultZoom={17}
             >
                 {
