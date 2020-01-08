@@ -14,6 +14,7 @@ interface State {
     stores: Store[],
     filterStores: Store[],
     center: Center,
+    location: string,
 }
 
 export default class App extends React.Component<Props, State> {
@@ -29,6 +30,7 @@ export default class App extends React.Component<Props, State> {
             stores: [],
             filterStores: [],
             center: this.tokyoOfficeLocation,
+            location: '大阪に切り替え',
         };
 
         (new GetStores(new StoreRepository())).execute().then((stores: AxiosResponse<Store[]>) => {
@@ -62,12 +64,27 @@ export default class App extends React.Component<Props, State> {
         })
     };
 
+    switch = (): void => {
+        console.log('a')
+        if (this.state.location === '大阪に切り替え') {
+            this.setState({
+                center: this.osakaOfficeLocation,
+                location: '東京に切り替え',
+            })
+        } else if (this.state.location === '東京に切り替え') {
+            this.setState({
+                center: this.tokyoOfficeLocation,
+                location: '大阪に切り替え',
+            })
+        }
+    }
+
     render() {
         return (
             <div className="App">
                 <GoogleMap stores={this.state.filterStores} center={this.state.center}/>
-                <div className="switch" onClick={() => { this.setState({center: this.osakaOfficeLocation}) }}>
-                    大阪
+                <div className="switch">
+                    <p onClick={this.switch}>{this.state.location}</p>
                 </div>
                 <input type='text' placeholder="お店検索" onChange={this.filter}/>
                 <StoreCardList stores={this.state.filterStores}/>
