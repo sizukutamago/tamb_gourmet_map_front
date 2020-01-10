@@ -65,7 +65,6 @@ export default class App extends React.Component<Props, State> {
     };
 
     switch = (): void => {
-        console.log('a')
         if (this.state.location === '大阪に切り替え') {
             this.setState({
                 center: this.osakaOfficeLocation,
@@ -77,7 +76,7 @@ export default class App extends React.Component<Props, State> {
                 location: '大阪に切り替え',
             })
         }
-    }
+    };
 
     render() {
         return (
