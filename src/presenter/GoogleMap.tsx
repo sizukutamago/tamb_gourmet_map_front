@@ -1,7 +1,7 @@
 import React from "react";
 import Store from "../domain/valueobjects/store";
 import GoogleMapReact from "google-map-react";
-import Marker from "./Marker";
+import {Marker, TambourineMarker} from "./Marker";
 import './GoogleMap.css';
 
 export interface Center {
@@ -34,6 +34,13 @@ const GoogleMap: React.FC<Props> = props => {
                             />
                         )
                     })
+                }
+                {
+                    <TambourineMarker
+                        lat={props.center.lat}
+                        lng={props.center.lng}
+                        storeName="tambourine"
+                    />
                 }
             </GoogleMapReact>
         </div>

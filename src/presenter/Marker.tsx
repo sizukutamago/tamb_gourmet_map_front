@@ -24,4 +24,15 @@ const Marker: React.FC<Props> = props => {
     );
 };
 
-export default Marker;
+const TambourineMarker: React.FC<Props> = props => {
+    return (
+        <div>
+            <img src="/tambourine.png" alt={props.storeName} style={{
+                width: '30px',
+                zIndex: 10
+            }} />
+        </div>
+    );
+};
+
+export { Marker , TambourineMarker};
