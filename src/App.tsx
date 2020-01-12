@@ -81,12 +81,19 @@ export default class App extends React.Component<Props, State> {
     render() {
         return (
             <div className="App">
-                <GoogleMap stores={this.state.filterStores} center={this.state.center}/>
-                <div className="switch">
-                    <p onClick={this.switch}>{this.state.location}</p>
+                <header style={{ width: '100vw', height: '10vh', backgroundColor: '#34ADE3'}}>
+                    <p style={{ position: "absolute", margin: '3.5vh 0 3.5vh 10px', fontWeight: 'bold'}}>tambourine gourmet map</p>
+                </header>
+                <div style={{ width: '100vw', height: '90vh'}}>
+                    <GoogleMap stores={this.state.filterStores} center={this.state.center}/>
+                    <div>
+                        <div className="switch">
+                            <p onClick={this.switch}>{this.state.location}</p>
+                        </div>
+                        <input type='text' placeholder="お店検索" onChange={this.filter}/>
+                        <StoreCardList stores={this.state.filterStores}/>
+                    </div>
                 </div>
-                <input type='text' placeholder="お店検索" onChange={this.filter}/>
-                <StoreCardList stores={this.state.filterStores}/>
             </div>
         );
     }
